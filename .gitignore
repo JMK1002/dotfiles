@@ -1,0 +1,13 @@
+.config/Code/
+.config/Electron/
+.config/dconf/
+.config/gh/
+.config/dolphinrc
+.config/go/
+.config/kde.org/
+.config/qt6ct/
+.config/session/
+.config/simple-update-notifier/
+.config/trashrc
+.config/vesktop/
+.config/yay/

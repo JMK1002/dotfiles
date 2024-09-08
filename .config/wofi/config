@@ -1,0 +1,15 @@
+width=590
+height=773
+location=center
+show=drun
+matching=fuzzy
+prompt=
+filter_rate=100
+no_actions=true
+halign=fill
+orientation=vertical
+content_halign=fill
+insensitive=true
+allow_images=true
+image_size=35
+term=kitty

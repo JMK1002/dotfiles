@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+swww img $1 --transition-type grow --invert-y --transition-pos "$(hyprctl cursorpos)" --transition-duration 3

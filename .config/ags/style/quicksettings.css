@@ -1,0 +1,22 @@
+@import "../../../.cache/wal/colors-ags.css";
+
+.menuPadding {
+    padding: 1.142rem;
+}
+
+.pfp {
+    background-image: url("/home/Julian/pfp.jpg");
+    background-size: cover;
+    border-radius: 2rem;
+}
+
+button.saving {
+    transition-duration: 200ms;
+    background: linear-gradient(45deg, rgb(37, 123, 0), rgb(51, 171, 0));
+}
+
+button.saving:hover {
+    background: linear-gradient(45deg, rgb(52, 172, 0), rgb(63, 210, 0));
+}
+
+/* wallpaper class is in pywal */

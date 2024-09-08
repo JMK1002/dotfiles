@@ -1,0 +1,11 @@
+@import "../../../.cache/wal/colors-ags.css";
+
+.shutdownButton {
+    margin: 0.428rem;
+    padding: 0.714rem;
+}
+
+.shutdownButton:hover {
+    margin: 0.428rem;
+    padding: 1.428rem;
+}

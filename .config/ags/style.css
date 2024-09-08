@@ -1,0 +1,103 @@
+@import "./style/quicksettings.css";
+@import "./style/shutdown.css";
+
+.icon-dropshadow {
+    box-shadow: none;
+}
+
+/* rem is 14px */
+
+button {
+    font-size: 26px;
+    margin: 0.285rem;
+    box-shadow: none;
+    text-shadow: none;
+    color: #e9e9e9;
+    border-radius: 2.85rem;
+    border-width: 0rem;
+    background: linear-gradient(45deg, @color3, @color4);
+    outline: none;
+}
+
+button:hover {
+    font-size: 26px;
+    margin: 0.285rem;
+    box-shadow: none;
+    text-shadow: none;
+    color: #e9e9e9;
+    border-radius: 2.85rem;
+    border-width: 0rem;
+    background: linear-gradient(45deg, @color11, @color12);
+    outline: none;
+}
+
+overshoot {
+    background-size: 0;
+}
+
+.overlay-indicator {
+    all: unset;
+}
+
+scale {
+    outline: none;
+}
+
+highlight {
+    border: none;
+    background-color: @color14;
+}
+
+trough {
+    min-height: 0.214rem;
+    /* background-color: @color6; */
+    background: none;
+    border: none;
+    outline: none;
+}
+
+slider {
+    border-radius: 2rem;
+    border-width: 0px;
+    background: linear-gradient(45deg, @color3, @color4);
+    box-shadow: unset;
+    text-shadow: unset;
+}
+
+.gradientBackground {
+    font-size: 26px;
+    margin: 4px;
+    padding: 0rem 1rem;
+    color: #e9e9e9;
+    border-style: solid;
+    border-radius: 2.85rem;
+    border-width: 0rem;
+    background: linear-gradient(45deg, @color3, @color4);
+    outline: none;
+}
+
+.whiteText {
+    font-size: 32px;
+    color: #e9e9e9;
+    padding: 0rem 1rem;
+}
+
+.transparentBackground {
+    padding: 0px;
+    border-radius: 2rem;
+    background: @background;
+    border-color: @color9;
+    border-width: 0.285rem;
+    border-style: solid;
+}
+
+.background {
+    all: unset
+}
+
+image {
+    color: white;
+    -gtk-icon-shadow: none;
+    box-shadow: unset;
+    text-shadow: unset;
+}

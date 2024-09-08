@@ -1,0 +1,110 @@
+@import "/home/Julian/.cache/wal/colors-waybar.css";
+
+* {
+  transition: 0.2s;
+}
+
+window {
+    margin: 0px;
+    //33ccff 2px
+    border: 2px solid @color3;
+    //background-color: #161925;
+    background-color: rgba(30, 30, 30, 0.7);
+    border-radius: 2rem;
+    font-family: "FiraCode Nerd Font Mono";
+    font-size: 18px;
+}
+
+#input, #selected {
+    background: linear-gradient(45deg, @color3, @color4);
+}
+
+#selected, #unselected {
+    padding: 0px 0px 0px 12px;
+}
+
+#input {
+    padding: 6px 12px 6px 6px;
+    margin: 30px;
+    color: #fff;
+    padding-left: 30px;
+    border: none;
+    font-weight: bold;
+    outline: none;
+    border-radius: 22px;
+}
+
+#input image {
+    color: #fff;
+}
+
+#input:focus {
+    border: none;
+    outline: none;	
+}
+
+#inner-box {
+    margin: 30px;
+    margin-top: 0px;
+    color: @color7;
+    border-radius: 22px;
+}
+
+#inner-box * {
+    transition: none;
+}
+
+#outer-box {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    border-radius: 22px;
+}
+
+#scroll {
+    margin-top: 7px;
+    border: none;
+    border-radius: 22px;
+    margin-bottom: 7px;
+}
+
+#text:selected {
+    color: #fff;
+    font-weight: bold;
+}
+
+#img {
+    background-size: contain;
+    margin-right: 30px;
+    background: transparent;
+}
+
+#text {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+    background: transparent;
+}
+
+#entry {
+    margin: 0px;
+    border: none;
+    border-radius: 22px;
+    background-color: transparent;
+    min-height:44px;
+    font-weight: bold;
+    outline: none;
+}
+
+#selected {
+    outline: none;
+    margin: 0px;
+    border: none;
+    border-radius: 22px;
+}
+
+#unselected {
+//    background: linear-gradient(rgba(30, 30, 30, 0.5), rgba(30, 30, 30, 0.95));
+    background: transparent;
+    border-radius: 22px;
+}

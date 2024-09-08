@@ -1,0 +1,125 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 60, // Waybar height (to be removed for auto height)
+    
+    "spacing": 17, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/workspaces",
+	"custom/cycle_wall"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "battery",
+        "cpu",
+        "memory",
+        "temperature",
+        "backlight",
+        "clock",
+    ],
+    "custom/cycle_wall":{
+	"tooltip-format": "",
+        "format":"      {}",
+        //"exec": "$bash ~/.config/waybar/wall wall",
+        //// "interval": 1,
+        "on-click": "~/.config/scripts/cycle"
+    },
+    "hyprland/workspaces": {
+	"active-only": "false",
+	"format": "<span color='#0a0a0a'>{icon}</span>",
+    	"format-icons": {
+		"active": "",
+		"empty": "",
+		"default": ""
+	}
+    },
+    "hyprland/window": {
+    	"format": "{initialTitle}",
+        "icon": true,
+	"rewrite": {
+		"": "  None"
+	}
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "calendar": {
+		"mode": "month",
+		"format": {
+			"months": "<span color='#00f7ff'><big><b>{}</b></big></span>",
+			"days": "<span color='#2087ae'>{}</span>",
+			"today": "<span color='#00f7ff'><b>{}</b></span>"
+		}
+	},
+	"tooltip-format": "<big><b>{:%H:%M}</b></big>\n<tt><big>{calendar}</big></tt>",
+        "format": "󰥔",
+    },
+    "cpu": {
+        "format": "",
+    },
+    "memory": {
+        "format": "",
+	"tooltip-format": "{}% RAM Used"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon}",
+	"tooltip-format": "{temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}",
+	"tooltip-format": "{percent}% Brightness",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+	"tooltip-format": "{capacity}%, {time}", 
+        "format-full": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "",""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "󰈁",
+        "tooltip-format": "{essid} {signalStrength}%",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "  {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+}

@@ -1,0 +1,102 @@
+@import "/home/Julian/.cache/wal/colors-waybar.css";
+window#waybar {
+    font-family: "JetBrains Mono NerdFont";
+    background: rgba(30, 30, 30, 0.4);
+}
+
+.modules-center, #workspaces, .modules-right {
+    opacity: 1;
+    border-radius: 2rem;
+    background: linear-gradient(145deg, @color3 30%, @color4 100%);;
+    color: rgba(10, 10, 10, 1);
+}
+
+.modules-center {
+    padding: 0px 6px 0px 6px;
+    margin: 8px 11px 8px 11px;
+}
+
+.modules-left, .modules-right {
+    padding: 0px 11px 0px 11px;
+    margin: 8px 11px 8px 11px;
+}
+
+#workspaces, #clock, #pulseaudio, #battery, #cpu, #memory, #temperature, #network, #backlight {
+    font-size: 26px;
+    font-weight: bolder;
+    border-radius: 2rem;
+    padding: 0 20px;
+}
+
+#window {
+    font-size: 22px;
+    border-radius: 2rem;
+}
+
+tooltip {
+    background: rgba(0, 0, 0, 1);
+    font-size: 30px;
+    border-radius: 2rem;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#custom-cycle_wall{
+    background: rgb(245,194,231);
+    background: linear-gradient(45deg, rgba(245,194,231,1) 0%, rgba(203,166,247,1) 0%, rgba(243,139,168,1) 13%, rgba(235,160,172,1) 26%, rgba(250,179,135,1) 34%, rgba(249,226,175,1) 49%, rgba(166,227,161,1) 65%, rgba(148,226,213,1) 77%, rgba(137,220,235,1) 82%, rgba(116,199,236,1) 88%, rgba(137,180,250,1) 95%); 
+    color: #fff;
+    background-size: 1000% 1000%;
+    animation: gradient 7s linear infinite;
+    font-weight:  bolder;
+    padding: 7px;
+    margin: 0px 0px 0px 6px;
+    border-radius: 2rem;
+}
+
+#clock {
+    opacity: 1;
+    padding: 3px 8px 3px 7px;
+}
+
+#battery {
+    opacity: 1;
+    padding: 2px 12px 2px 5px;
+}
+
+#memory {
+    opacity: 1;
+    padding: 2px 8px 2px 5px;
+}
+
+#cpu {
+    opacity: 1;
+    padding: 2px 9px 2px 5px;
+}
+
+#temperature {
+    opacity: 1;
+    padding: 2px 6px 2px 5px;
+}
+#backlight {
+    opacity: 1;
+    padding: 2px 9px 2px 5px;
+
+}
+#network {
+    opacity: 1;
+    padding: 2px 11px 2px 5px;
+}
+#pulseaudio {
+    opacity: 1;
+    padding: 2px 11px 2px 5px;
+}
