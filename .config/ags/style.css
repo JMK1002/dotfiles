@@ -1,5 +1,6 @@
 @import "./style/quicksettings.css";
 @import "./style/shutdown.css";
+@import "./style/diagnostic.css";
 
 .icon-dropshadow {
     box-shadow: none;
@@ -83,7 +84,7 @@ slider {
 }
 
 .transparentBackground {
-    padding: 0px;
+    padding: 2.14rem;
     border-radius: 2rem;
     background: @background;
     border-color: @color9;

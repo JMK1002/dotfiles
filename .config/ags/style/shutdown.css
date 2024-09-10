@@ -3,9 +3,11 @@
 .shutdownButton {
     margin: 0.428rem;
     padding: 0.714rem;
+    transition-duration: 300ms;
 }
 
 .shutdownButton:hover {
     margin: 0.428rem;
     padding: 1.428rem;
+    transition-duration: 300ms;
 }

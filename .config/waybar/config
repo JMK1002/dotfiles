@@ -27,7 +27,7 @@
         "format":"      {}",
         //"exec": "$bash ~/.config/waybar/wall wall",
         //// "interval": 1,
-        "on-click": "~/.config/scripts/cycle"
+        "on-click": "~/.config/scripts/cycle.sh"
     },
     "hyprland/workspaces": {
 	"active-only": "false",

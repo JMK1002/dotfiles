@@ -12,7 +12,7 @@ if [ $index -ge ${#files[@]} ]; then
 index=0
 fi
 echo $index > $TEMP
-$scripts/wall "${files[$index]}"
+$scripts/wall.sh "${files[$index]}"
 
 wal -i $(swww query | grep -o -E 'image: .+' | tail -c+8) -n --cols16
 

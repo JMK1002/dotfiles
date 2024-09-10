@@ -6,6 +6,7 @@ const page = Variable("home")
 
 const stack = Widget.Stack({
     className: "quicksettings transparentBackground",
+    css: "padding: 0rem;",
     homogeneous: false,
     children: {
         "home": HomeMenu(page),

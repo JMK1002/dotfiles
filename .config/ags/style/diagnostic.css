@@ -1,0 +1,15 @@
+@import "../../../.cache/wal/colors-ags.css";
+
+.circularProgress {
+    min-width: 12rem;  /* its size is min(min-height, min-width) */
+    min-height: 12rem;
+    font-size: 1.35rem; /* to set its thickness set font-size on it */
+    margin: 0rem; /* you can set margin on it */
+}
+
+.blockBackground {
+    background: @background;
+    padding: 1rem;
+    margin: 0.2rem;
+    border-radius: 2rem;
+}

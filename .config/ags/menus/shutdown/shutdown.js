@@ -62,7 +62,6 @@ const exitButton = Widget.Button({
 
 const powerMenu = Widget.Box({
     className: "transparentBackground",
-    css: "padding: 2.14rem;",
     homogeneous: false,
     children: [
         powerButton,
