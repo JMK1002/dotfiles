@@ -1,0 +1,9 @@
+# GIMP action-history
+
+(history-item "image-new" 0)
+(history-item "tools-color-picker" 0)
+(history-item "tools-paintbrush" 0)
+(history-item "tools-ellipse-select" 0)
+(history-item "tools-pencil" 1)
+
+# end of action-history

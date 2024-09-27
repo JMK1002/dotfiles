@@ -1,10 +1,11 @@
 import WindowRevealer from "../../utils/WindowRevealer.js"
+import cpuMenu from "./menus/cpu.js"
 
 const ram = Variable(0)
 const cpu = Variable(0)
 const temp = Variable(0)
 
-Utils.interval(30000, () => {
+Utils.interval(10000, () => {
     Utils.execAsync(`bash ${App.configDir}/scripts/ram.sh`)
     .then((val) => {
         ram.value = val
@@ -48,6 +49,9 @@ const getProgress = (col, icon, val, end) => {
                     css: "font-size: 2.4rem; font-weight: bold;",
                     label: `${val.value}${end}`
                 })
+                .hook(val, self => {
+                    self.label = `${val.value}${end}`
+                }, "changed")
             },
             onHoverLost: self => {
                 self.child.child = getIcon(col, icon)
@@ -61,17 +65,28 @@ const getProgress = (col, icon, val, end) => {
     })
 }
 
+const progressCircles = Widget.Box({
+    vertical: false,
+    children: [
+        getProgress(12, "ram-symbolic", ram, "%"), 
+        getProgress(13, "cpu-symbolic", cpu, "%"), 
+        getProgress(14, "temp-symbolic", temp, "°C")
+    ]
+})
+
 export const DiagnosticMenu = WindowRevealer({
     name: "diagnosticmenu",
     anchor: ["top", "left"],
     layer: "overlay",
     child: Widget.Box({
         className: "transparentBackground",
-        children: [
-            getProgress(12, "ram-symbolic", ram, "%"), 
-            getProgress(13, "cpu-symbolic", cpu, "%"), 
-            getProgress(14, "temp-symbolic", temp, "°C")
-        ]
+        child: Widget.Box({
+            vertical: true,
+            children: [
+                progressCircles,
+                cpuMenu
+            ]
+        })
     }),
     keymode: "on-demand"
 })
