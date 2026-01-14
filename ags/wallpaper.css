@@ -1,0 +1,21 @@
+.timeWindow {
+  padding-bottom: 70px;
+  padding-right: 800px;
+}
+.timeWindow .weekday {
+  font-family: "Pacifico";
+  letter-spacing: 0.2rem;
+  font-size: 4rem;
+  color: #7185BA;
+  margin-bottom: 0rem;
+}
+.timeWindow .time {
+  font-size: 3rem;
+  color: #8877B5;
+}
+.timeWindow .date {
+  font-size: 3rem;
+  color: #8877B5;
+}
+
+/*# sourceMappingURL=wallpaper.css.map */

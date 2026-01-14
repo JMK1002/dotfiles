@@ -1,0 +1,16 @@
+@use "../../../../.cache/wal/colors-ags" as col;
+
+@mixin hidden {
+	* {
+		background: transparent;
+		outline-color: transparent;
+		border-color: transparent;
+		color: transparent;
+		box-shadow: none;
+	}
+}
+
+.timeWindow {
+	// @include hidden();
+	padding-bottom: 750px;
+}

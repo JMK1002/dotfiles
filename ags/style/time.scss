@@ -1,0 +1,26 @@
+@use "../../../.cache/wal/colors-ags" as col;
+
+.timeWindow {
+	.weekday {
+		margin: 0.2em;
+		font-family: "Anurati";
+		font-weight: bold;
+		font-size: 6rem;
+		letter-spacing: 1rem;
+		color: col.$color2;
+	}
+	
+	.date {
+		font-family: "nunito";
+		font-weight: bold;
+		font-size: 3rem;
+		color: col.$color3;
+	}
+	
+	.time {
+		font-family: "nunito";
+		font-weight: bold;
+		font-size: 3rem;
+		color: col.$color3;
+	}
+}

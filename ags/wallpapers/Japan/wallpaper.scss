@@ -1,0 +1,28 @@
+@use "../../../../.cache/wal/colors-ags" as col;
+
+@mixin hidden {
+	* {
+		background: transparent;
+		outline-color: transparent;
+		border-color: transparent;
+		color: transparent;
+		box-shadow: none;
+	}
+}
+
+.timeWindow {
+	// @include hidden();
+	padding-right: 900px;
+	.weekday {
+		font-family: "Hoodson Script Free Demo";
+		color: col.$color1;
+	}
+	
+	.date {
+		color: col.$color2;
+	}
+	
+	.time {
+		color: col.$color2;
+	}
+}

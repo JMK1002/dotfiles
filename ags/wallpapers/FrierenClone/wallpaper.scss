@@ -1,0 +1,35 @@
+@use "../../../../.cache/wal/colors-ags" as col;
+
+@mixin hidden {
+	* {
+		background: transparent;
+		outline-color: transparent;
+		border-color: transparent;
+		color: transparent;
+		box-shadow: none;
+	}
+}
+
+.timeWindow {
+	@include hidden();
+	padding-top: 450px;
+	padding-right: 1300px;
+
+	.weekday {
+		font-family: "Pacifico";
+		letter-spacing: 0.2rem;
+		font-size: 4rem;
+		color: col.$color12;
+		margin-bottom: 0rem;
+	}
+
+	.time {
+		font-size: 3rem;
+		color: col.$color11;
+	}
+
+	.date {
+		font-size: 3rem;
+		color: col.$color11;
+	}
+}

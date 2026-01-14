@@ -1,0 +1,106 @@
+@use "../../.cache/wal/colors-ags.scss" as col;
+@use "./style/background.scss";
+@use "./style/calendar.scss";
+@use "./style/popup.scss";
+@use "./style/backgroundMenu.scss";
+@use "./style/bar.scss";
+@use "./style/time.scss";
+
+.icon-dropshadow {
+    box-shadow: none;
+}
+
+box {
+    padding: 0.1em;
+}
+
+viewport {
+    all: unset;
+}
+
+button {
+    font-size: 1em;
+    margin: 0.35em;
+    box-shadow: none;
+    text-shadow: none;
+    color: #e9e9e9;
+    border-radius: 2em;
+    background-color: col.$color3;
+    outline: none;
+}
+
+overshoot {
+    background-size: 0;
+}
+
+.overlay-indicator {
+    all: unset;
+}
+
+scale {
+    outline: none;
+}
+
+highlight {
+    border: none;
+    background-color: col.$color14;
+}
+
+trough {
+    min-height: 0.1em;
+    // background-color: col.$color6;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+slider {
+    border-radius: 2em;
+    border-width: 0px;
+    background: linear-gradient(45deg, col.$color3, col.$color4);
+    box-shadow: unset;
+    text-shadow: unset;
+}
+
+.gradientBackground {
+    font-size: 1.5rem;
+    padding: 0 1em;
+    margin: 0.1em;
+    color: #e9e9e9;
+    border-style: solid;
+    border-radius: 0.5em;
+    border-width: 0rem;
+    background: linear-gradient(45deg, col.$color3, col.$color4);
+    outline: none;
+    box-shadow: unset;
+    text-shadow: unset;
+}
+
+.whiteText {
+    font-size: 32px;
+    color: #e9e9e9;
+}
+
+.transparentBackground {
+    padding: 2em;
+    border-radius: 0.5em;
+    background: col.$background;
+    border-color: col.$color9;
+    border-width: 0.285rem;
+    border-style: solid;
+}
+
+.darkerBackground {
+    background: col.$darkerBackground;
+}
+
+.background {
+    all: unset
+}
+
+image {
+    color: white;
+    -gtk-icon-shadow: none;
+    box-shadow: unset;
+    text-shadow: unset;
+}

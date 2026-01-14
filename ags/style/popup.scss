@@ -1,0 +1,23 @@
+@use "../../../.cache/wal/colors-ags" as col;
+
+.popup {
+	background: col.$darkerBackground;
+	border-color: col.$color9;
+
+	> box {
+		border-radius: 0.7em;
+		background: col.$darkerBackground;
+		border-color: col.$color9;
+		border-width: 0.285rem;
+		border-style: solid;
+	}
+	
+	* {
+		margin: 0.5em;
+		// padding: 1em;
+	}
+
+	label {
+		font-size: 20px;
+	}
+}

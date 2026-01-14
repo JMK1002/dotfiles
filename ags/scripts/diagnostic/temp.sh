@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Check if lm-sensors is installed
+if ! command -v sensors &> /dev/null; then
+    echo "lm-sensors is not installed. Please install it first."
+    exit 1
+fi
+
+# Use sensors command to get temperature information
+temperature=$(sensors | grep 'Core\|Sensor' | awk '{print $3}' | head -1)
+temporary=${temperature#*+}
+final=${temporary%°C*}
+
+# Print the temperature
+printf "%.0f\n" "$final"

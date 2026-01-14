@@ -1,0 +1,10 @@
+@use "../../../.cache/wal/colors-ags.scss" as col;
+
+.appButton {
+	background: transparent;
+}
+
+.selectedAppButton {
+	background-color: col.$color4;
+	border-radius: 0.5em;
+}
