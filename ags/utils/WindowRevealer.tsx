@@ -2,7 +2,6 @@ import { Astal, Gdk, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app"
 import GObject from "gnim/gobject"
 
-
 export default ({
     name,
     className,

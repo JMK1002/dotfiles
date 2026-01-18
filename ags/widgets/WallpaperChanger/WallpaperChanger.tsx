@@ -69,7 +69,7 @@ export default () => {
         class={"transparentBackground darkerBackground"}
         anchor={Astal.WindowAnchor.NONE}
         layer={Astal.Layer.OVERLAY}
-        keymode={Astal.Keymode.EXCLUSIVE}
+        keymode={Astal.Keymode.ON_DEMAND}
         exclusivity={Astal.Exclusivity.IGNORE}
         visible={false}
         >

@@ -16,11 +16,9 @@ app.start({
         app.apply_css("./wallpaper.css")
         app.get_monitors().map(Bar)
         app.get_monitors().map(WallpaperChanger)
+        app.get_monitors().map(Time)
         // app.get_monitors().map(Calendar)
         // App.get_monitors().map(Quicksettings)
         // App.get_monitors().map(TextDisplay)
     },
 })
-// Time
-// timeout(0, WallpaperChanger)
-// WallpaperChanger

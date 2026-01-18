@@ -1,28 +1,31 @@
+import { execAsync } from "ags/process"
 import WindowRevealer from "../../utils/WindowRevealer"
-import {bind, execAsync, interval, Variable} from "astal"
-import {Gtk, App, Astal, Gdk} from "astal/gtk3"
+import { createBinding, createState } from "gnim"
+import { interval } from "ags/time"
+import { Astal, Gtk } from "ags/gtk4"
 
-const weekday = Variable("")
-const date = Variable("")
-const time = Variable("")
+
+const [getWeekday, setWeekday] = createState("")
+const [getDate, setDate] = createState("")
+const [getTime, setTime] = createState("")
 
 const updateTime = () => {
-	execAsync("date +\"%A\"").then(res => weekday.set(res))
-	execAsync("date +\"%B %d, %Y\"").then(res => date.set(res))
-	execAsync("date +\"%I:%M%P\"").then(res => time.set(res))
+	execAsync("date +\"%A\"").then(res => setWeekday(res))
+	execAsync("date +\"%B %d, %Y\"").then(res => setDate(res))
+	execAsync("date +\"%I:%M%P\"").then(res => setTime(res))
 }
 
 updateTime()
 
 interval(3000, updateTime)
 
-export default WindowRevealer({
+export default () => WindowRevealer({
 	name: "TimeWindow",
 	className: "timeWindow",
-	child: <box vertical className="timeWindow">
-		<label label={bind(weekday).as(w => w.toUpperCase())} className="weekday"/>
-		<label label={bind(date)} className="date"/>
-		<label label={bind(time)} className="time"/>
+	child: <box orientation={Gtk.Orientation.VERTICAL}>
+		<label label={getWeekday.as(w => w.toUpperCase())} class="weekday"/>
+		<label label={getDate} class="date"/>
+		<label label={getTime} class="time"/>
 	</box>,
 	anchor: Astal.WindowAnchor.NONE,
 	layer: Astal.Layer.BACKGROUND,
@@ -30,5 +33,5 @@ export default WindowRevealer({
 	exclusivity: Astal.Exclusivity.IGNORE,
 	css: "",
 	visible: true,
-	setup: () => {}
+	$: () => {}
 })
