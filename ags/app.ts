@@ -1,5 +1,5 @@
-import app from "ags/gtk3/app"
-import Gtk from "gi://Gtk?version=3.0"
+import app from "ags/gtk4/app"
+import Gtk from "gi://Gtk?version=4.0"
 import style from "./style.scss"
 import { timeout } from "./types/utils/timeout"
 
@@ -15,10 +15,10 @@ app.start({
     main() {
         app.apply_css("./wallpaper.css")
         app.get_monitors().map(Bar)
-        app.get_monitors().map(Calendar)
+        // app.get_monitors().map(Calendar)
         // App.get_monitors().map(Quicksettings)
         // App.get_monitors().map(TextDisplay)
     },
 })
-Time
-timeout(0, WallpaperChanger)
+// Time
+// timeout(0, WallpaperChanger)

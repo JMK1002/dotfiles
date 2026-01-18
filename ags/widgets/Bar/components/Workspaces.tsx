@@ -1,32 +1,33 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import { Variable, bind } from "astal"
+import { Gtk } from "ags/gtk4"
 import Hyprland from "gi://AstalHyprland"
-import AstalHyprland from "gi://AstalHyprland?version=0.1"
+import { createBinding } from "ags"
+
+
 
 const hyprland = Hyprland.get_default()
 
 export default function Workspaces() {
     return <box 
-        className="Workspaces"
+        class="Workspaces"
         vexpand={false}
         valign={Gtk.Align.CENTER}
         >
-            {bind(hyprland, "workspaces").as(workspaces => workspaces
+            {createBinding(hyprland, "workspaces").as(workspaces => workspaces
                 .sort((a, b) => a.id - b.id)
-                .map(ws => (
+                .map(workspace => (
                     <button 
-                        className={
-                            bind(hyprland, "focusedWorkspace")
+                        class={
+                            createBinding(hyprland, "focusedWorkspace")
                                 .as(
-                                    fw => ws === fw ?
+                                    focusedWorkspace => workspace === focusedWorkspace ?
                                         "focused transparentButton" :
                                         "unfocused transparentButton"
                                 )
                         }
-                        onClicked={() => ws.focus()}>
-                        <box className="WorkspaceCircle" />
+                        onClicked={() => workspace.focus()}>
+                        <box class="WorkspaceCircle" />
                     </button>
                 ))
-            )}
+            )()}
         </box>
 }

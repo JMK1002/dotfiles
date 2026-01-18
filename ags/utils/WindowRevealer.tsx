@@ -1,5 +1,6 @@
-import {Gtk, App, Astal, Gdk} from "astal/gtk3"
-import {Variable} from "astal"
+import { Astal, Gdk, Gtk } from "ags/gtk4"
+import app from "ags/gtk4/app"
+
 
 export default ({
     name,
@@ -24,19 +25,21 @@ export default ({
     setup : () => void
 }) => <window
     name={name}
-    className={className}
+    class={className}
     anchor={anchor}
     layer={layer}
     keymode={keymode}
     exclusivity={exclusivity}
-    application={App}
+    application={app}
     visible={visible}
-    setup={setup}
-    onKeyPressEvent={(self, event: Gdk.Event) => {
-        if (event.get_keyval()[1] === Gdk.KEY_Escape) {
-            self.hide()
-        }
-    }}
+    $={setup}
     >
+        <Gtk.EventControllerKey
+            onKeyPressed={(self, keyval: number) => {
+                if (keyval === Gdk.KEY_Escape) {
+                    app.toggle_window(name)
+                }
+            }}
+        />
         {child}
 </window>

@@ -1,9 +1,10 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import { exec, execAsync, Variable } from "astal"
 import Workspaces from "./components/Workspaces"
 import BackgroundButton from "./components/BackgroundButton"
 import WofiButton from "./components/WofiButton"
 import CalendarButton from "./components/CalendarButton"
+import Gdk from "gi://Gdk?version=4.0"
+import { Astal, Gtk } from "ags/gtk4"
+import app from "ags/gtk4/app"
 
 
 // * Have Wofi launcher, workspaces, bg changer, media, frequently used apps (maybe), diagnostic, quicksettings, calendar, power
@@ -11,13 +12,15 @@ import CalendarButton from "./components/CalendarButton"
 export default function Bar(gdkmonitor: Gdk.Monitor) {
     return <window
         name="Bar"
-        className="Bar"
+        class="Bar"
         gdkmonitor={gdkmonitor}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={Astal.WindowAnchor.TOP
             | Astal.WindowAnchor.LEFT
             | Astal.WindowAnchor.RIGHT}
-        application={App}>
+        application={app}
+        visible={true}
+        >
 
         <box 
         spacing={20}

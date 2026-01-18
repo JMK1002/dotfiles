@@ -1,11 +1,10 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import { Variable, bind, exec, execAsync } from "astal"
+import app from "ags/gtk4/app"
 
 export default function CalendarButton() {
 	return <button
-		className={"transparentButton"}
+		class={"transparentButton"}
 		onClicked = {() => {
-			App.toggle_window("CalendarWindow")
+			app.toggle_window("CalendarWindow")
 		}}>
 			Calendar
 	</button>

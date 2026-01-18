@@ -1,11 +1,10 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import { Variable, bind, exec, execAsync } from "astal"
+import app from "ags/gtk4/app"
 
 export default function BackgroundButton() {
     return <button
-        className={"animatedGradient"}
+        class={"animatedGradient"}
         onClicked = {() => {
-            App.toggle_window("WallpaperChanger")
+            App.toggleWindow("WallpaperChanger")
         }}>
             Change Background
     </button>

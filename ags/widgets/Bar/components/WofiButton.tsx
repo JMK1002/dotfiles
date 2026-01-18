@@ -1,9 +1,8 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import { Variable, bind, exec, execAsync } from "astal"
+import { execAsync } from "ags/process"
 
 export default function BackgroundButton() {
     return <button
-        className={"transparentButton"}
+        class={"transparentButton"}
         onClicked = {() => {
             execAsync("rofi -show drun")
         }}>
