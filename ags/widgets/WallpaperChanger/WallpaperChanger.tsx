@@ -1,24 +1,28 @@
 import WindowRevealer from "../../utils/WindowRevealer"
-import {bind, execAsync, interval, Variable} from "astal"
-import {Gtk, App, Astal, Gdk} from "astal/gtk3"
 import settings from "../../settings.json"
+import { createBinding, createState } from "gnim";
+import { execAsync } from "ags/process";
+import app from "ags/gtk4/app";
+import { Astal, Gdk, Gtk } from "ags/gtk4";
 
-const selectedIndex = Variable(0);
-const wallpapers = Variable(settings["wallpapers"])
+const [getSelectedIndex, setSelectedIndex] = createState(0);
+const [getWallpapers, setWallpapers] = createState(settings["wallpapers"])
 
 const changeWallpaper = () => {
-    const wallpaperFolder = `${wallpapers.get()[selectedIndex.get()]["folderName"]}`
-    const wallpaperPath = `${wallpaperFolder}/${wallpapers.get()[selectedIndex.get()]["wallpaperFileName"]}`
-    const imagePath = `${wallpaperFolder}/${wallpapers.get()[selectedIndex.get()]["imageFileName"]}`
+    const wallpaperJSON = getWallpapers()[getSelectedIndex()]
+
+    const wallpaperFolder = `${wallpaperJSON["folderName"]}`
+    const wallpaperPath = `${wallpaperFolder}/${wallpaperJSON["wallpaperFileName"]}`
+    const imagePath = `${wallpaperFolder}/${wallpaperJSON["imageFileName"]}`
     const wallpaperSheetPath = `wallpapers/${wallpaperFolder}/wallpaper.scss`
-    console.log()
+    
     execAsync(`bash ./scripts/WallpaperChanger/changeWallpaper.sh 
             \"${wallpaperPath}\" 
             \"${imagePath}\" 
             \"${wallpaperSheetPath}\"`
         ).then(() => {
-            App.apply_css("style.css", true)
-            App.apply_css("wallpaper.css")
+            app.apply_css("style.css", true)
+            app.apply_css("wallpaper.css")
             execAsync(`bash ./scripts/WallpaperChanger/externalChanges.sh`)
         }
     )
@@ -32,64 +36,71 @@ const WallpaperButton = ({
     window : Gtk.Window
 }) => <button
     canFocus={false}
-    className={bind(selectedIndex).as(self => self == index ? "selectedAppButton" : "appButton")}
+    class={getSelectedIndex.as(self => self == index ? "selectedAppButton" : "appButton")}
     onClicked={() => {
-        if (selectedIndex.get() == index) {
-            App.toggle_window("WallpaperChanger")
+        if (getSelectedIndex() == index) {
+            app.toggle_window("WallpaperChanger")
             changeWallpaper()
-            selectedIndex.set(0)
+            setSelectedIndex(0)
         }
         else {
-            selectedIndex.set(index)
+            setSelectedIndex(index)
         }
     }}
     >
     <box>
-        <box valign={Gtk.Align.CENTER} vertical>
+        <box valign={Gtk.Align.CENTER} orientation={Gtk.Orientation.VERTICAL}>
             <label
-                className="name"
-                truncate
+                class="name"
                 xalign={0}
-                label={wallpapers.get()[index]["displayName"]}
+                label={getWallpapers()[index]["displayName"]}
             />
         </box>
     </box>
 </button>
 
-export default () => <window
-    name={"WallpaperChanger"}
-    application={App}
-	className={"transparentBackground darkerBackground"}
-    anchor={Astal.WindowAnchor.NONE}
-    layer={Astal.Layer.OVERLAY}
-    keymode={Astal.Keymode.EXCLUSIVE}
-    exclusivity={Astal.Exclusivity.IGNORE}
-    visible={false}
-    onKeyPressEvent={(self, event: Gdk.Event) => {
-        if (event.get_keyval()[1] === Gdk.KEY_Escape) {
-            self.hide()
-            selectedIndex.set(0)
-        }
-        else if (event.get_keyval()[1] === Gdk.KEY_Return) {
-            self.hide()
-            changeWallpaper()
-            selectedIndex.set(0)
-        }
-        else if (event.get_keyval()[1] === Gdk.KEY_Down) {
-            selectedIndex.set(selectedIndex.get() + 1)
-        } 
-        else if (event.get_keyval()[1] === Gdk.KEY_Up) {
-            selectedIndex.set(selectedIndex.get() - 1)
-        }
-        selectedIndex.set(Math.min(selectedIndex.get(), wallpapers.get().length - 1))
-        selectedIndex.set(Math.max(selectedIndex.get(), 0))
-    }}>
-        <box vertical widthRequest={700}>
-            {bind(wallpapers).as(self => {
-                let ind = 0;
-                return self.map(() => {
-                    return WallpaperButton({index: ind++})
-                })
-            })}
-        </box>
-</window>
+export default () => {
+    let win : Gtk.Window
+
+    return <window
+        $={self => {win = self}}
+        name={"WallpaperChanger"}
+        application={app}
+        class={"transparentBackground darkerBackground"}
+        anchor={Astal.WindowAnchor.NONE}
+        layer={Astal.Layer.OVERLAY}
+        keymode={Astal.Keymode.EXCLUSIVE}
+        exclusivity={Astal.Exclusivity.IGNORE}
+        visible={false}
+        >
+            <Gtk.EventControllerKey
+                onKeyPressed={(self, keyval : number) => {
+                    if (keyval === Gdk.KEY_Escape) {
+                        win.hide()
+                        setSelectedIndex(0)
+                    }
+                    else if (keyval === Gdk.KEY_Return) {
+                        win.hide()
+                        changeWallpaper()
+                        setSelectedIndex(0)
+                    }
+                    else if (keyval === Gdk.KEY_Down) {
+                        setSelectedIndex(getSelectedIndex() + 1)
+                    } 
+                    else if (keyval === Gdk.KEY_Up) {
+                        setSelectedIndex(getSelectedIndex() - 1)
+                    }
+                    setSelectedIndex(Math.min(getSelectedIndex(), getWallpapers().length - 1))
+                    setSelectedIndex(Math.max(getSelectedIndex(), 0))
+                }}
+            />
+            <box orientation={Gtk.Orientation.VERTICAL} widthRequest={700}>
+                {getWallpapers.as(self => {
+                    let ind = 0;
+                    return self.map(() => {
+                        return WallpaperButton({index: ind++, window: win})
+                    })
+                })()}
+            </box>
+    </window>
+}

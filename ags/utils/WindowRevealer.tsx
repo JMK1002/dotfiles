@@ -1,5 +1,6 @@
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app"
+import GObject from "gnim/gobject"
 
 
 export default ({
@@ -11,18 +12,18 @@ export default ({
     keymode=Astal.Keymode.ON_DEMAND,
     exclusivity=Astal.Exclusivity.NORMAL,
     visible,
-    setup,
+    $,
 } : {
     name : string,
     className : string,
-    child : Gtk.Widget,
+    child : GObject.Object,
     anchor : number,
     layer : Astal.Layer,
     keymode : Astal.Keymode,
     exclusivity : Astal.Exclusivity,
     css : string
     visible : boolean
-    setup : () => void
+    $ : () => void
 }) => <window
     name={name}
     class={className}
@@ -32,7 +33,7 @@ export default ({
     exclusivity={exclusivity}
     application={app}
     visible={visible}
-    $={setup}
+    $={$}
     >
         <Gtk.EventControllerKey
             onKeyPressed={(self, keyval: number) => {

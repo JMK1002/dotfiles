@@ -4,7 +4,7 @@ export default function BackgroundButton() {
     return <button
         class={"animatedGradient"}
         onClicked = {() => {
-            App.toggleWindow("WallpaperChanger")
+            app.toggle_window("WallpaperChanger")
         }}>
             Change Background
     </button>
