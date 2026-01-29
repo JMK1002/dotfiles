@@ -39,13 +39,21 @@
 .calendar .highlight {
   color: #97A8DF;
 }
-.calendar :indeterminate {
+.calendar decoration :indeterminate {
   color: #717ea7;
 }
-.calendar :selected {
+
+.today {
+  font-weight: bolder;
+  box-shadow: 0 -2px #665987 inset;
+}
+
+.day-number:selected {
   border-radius: 0.84rem;
+  box-shadow: inset 0 0px 0 0 #97A8DF, inset 0 0 0 2px #97A8DF;
+  background-color: #665987;
+  font-weight: bolder;
   color: #97A8DF;
-  box-shadow: inset 0 -8px 0 0 #97A8DF, inset 0 0 0 2px #97A8DF;
 }
 
 .popup {
@@ -110,6 +118,10 @@ button.unfocused {
   font-weight: bold;
   font-size: 3rem;
   color: #665987;
+}
+
+* :focus {
+  outline: none;
 }
 
 .icon-dropshadow {

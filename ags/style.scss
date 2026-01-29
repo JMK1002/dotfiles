@@ -6,6 +6,12 @@
 @use "./style/bar.scss";
 @use "./style/time.scss";
 
+* {
+    :focus {
+        outline: none;
+    }
+}
+
 .icon-dropshadow {
     box-shadow: none;
 }

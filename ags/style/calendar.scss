@@ -23,14 +23,24 @@
 	.highlight {
 		color: col.$color14; 
 	}
-
+	decoration
 	:indeterminate {
 		color: col.$color6; 
 	}
+}
 
-	:selected {
-		border-radius: 0.84rem;
-		color: col.$color14;
-		box-shadow: inset 0 -8px 0 0 col.$color14, inset 0 0 0 2px col.$color14; 
-	}
+.today {
+	font-weight: bolder;
+	box-shadow: 0 -2px col.$color3 inset;
+}
+
+.day-number:selected {
+	border-radius: 0.84rem;
+	box-shadow: inset 0 -0px 0 0 col.$color14, inset 0 0 0 2px col.$color14; 
+	background-color: col.$color3;
+	font-weight: bolder;
+	color: col.$color14;
+	// outline: none;
+	// animation: none;
+	// transition: none;
 }
