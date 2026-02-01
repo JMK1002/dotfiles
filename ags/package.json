@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "ags": "*",
-    "gnim": "*"
+    "gnim": "*",
+    "ical.js": "^2.2.1"
   },
   "prettier": {
     "semi": false,
