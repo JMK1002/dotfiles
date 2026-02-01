@@ -1,45 +1,42 @@
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app"
 import GObject from "gnim/gobject"
+import { WindowProps } from "../types/widgets/window"
 
-export default ({
-    name,
-    className,
-    child,
-    anchor=Astal.WindowAnchor.NONE,
-    layer=Astal.Layer.TOP,
-    keymode=Astal.Keymode.ON_DEMAND,
-    exclusivity=Astal.Exclusivity.NORMAL,
-    visible,
-    $,
-} : {
-    name : string,
-    className : string,
-    child : GObject.Object,
-    anchor : number,
-    layer : Astal.Layer,
-    keymode : Astal.Keymode,
-    exclusivity : Astal.Exclusivity,
-    css : string
-    visible : boolean
-    $ : () => void
-}) => <window
-    name={name}
-    class={className}
-    anchor={anchor}
-    layer={layer}
-    keymode={keymode}
-    exclusivity={exclusivity}
-    application={app}
-    visible={visible}
-    $={$}
-    >
-        <Gtk.EventControllerKey
-            onKeyPressed={(self, keyval: number) => {
-                if (keyval === Gdk.KEY_Escape) {
-                    app.toggle_window(name)
-                }
-            }}
-        />
-        {child}
-</window>
+// interface WindowRevealerProps extends Gtk.Window.ConstructorProps {
+
+// }
+
+// export default (input : WindowRevealerProps) => <window
+//     name={name}
+//     class={className}
+//     anchor={anchor}
+//     layer={layer}
+//     keymode={keymode}
+//     exclusivity={exclusivity}
+//     application={app}
+//     visible={visible}
+//     $={$}
+//     >
+        // <Gtk.EventControllerKey
+        //     onKeyPressed={(self, keyval: number) => {
+        //         if (keyval === Gdk.KEY_Escape) {
+        //             app.toggle_window(name)
+        //         }
+        //     }}
+        // />
+//         {child}
+// </window>
+
+export default (window : Astal.Window) => {
+    const exitEventController = new Gtk.EventControllerKey()
+    exitEventController.connect("key-pressed", (self, keyval: number) => {
+        if (keyval === Gdk.KEY_Escape) {
+            app.toggle_window(window.name)
+        }
+    })
+
+    window.add_controller(exitEventController)
+
+    return window
+}

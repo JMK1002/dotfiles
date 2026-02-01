@@ -22,3 +22,4 @@ app.start({
         // App.get_monitors().map(TextDisplay)
     },
 })
+

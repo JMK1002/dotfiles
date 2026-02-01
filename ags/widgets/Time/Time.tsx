@@ -19,19 +19,25 @@ updateTime()
 
 interval(3000, updateTime)
 
-export default () => WindowRevealer({
-	name: "TimeWindow",
-	className: "timeWindow",
-	child: <box orientation={Gtk.Orientation.VERTICAL}>
-		<label label={getWeekday.as(w => w.toUpperCase())} class="weekday"/>
-		<label label={getDate} class="date"/>
-		<label label={getTime} class="time"/>
-	</box>,
-	anchor: Astal.WindowAnchor.NONE,
-	layer: Astal.Layer.BACKGROUND,
-	keymode: Astal.Keymode.NONE,
-	exclusivity: Astal.Exclusivity.IGNORE,
-	css: "",
-	visible: true,
-	$: () => {}
-})
+
+export default () => {
+	const window = <window
+		name="TimeWindow"
+		class="timeWindow"
+		anchor={Astal.WindowAnchor.NONE}
+		layer={Astal.Layer.BACKGROUND}
+		keymode={Astal.Keymode.NONE}
+		exclusivity={Astal.Exclusivity.IGNORE}
+		visible={true}
+		>
+		<box orientation={Gtk.Orientation.VERTICAL}>
+			<label label={getWeekday.as(w => w.toUpperCase())} class="weekday"/>
+			<label label={getDate} class="date"/>
+			<label label={getTime} class="time"/>
+		</box>
+	</window>
+
+	if (window instanceof Astal.Window) {
+		return WindowRevealer(window)
+	}
+}
