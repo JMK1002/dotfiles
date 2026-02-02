@@ -22,7 +22,7 @@ class GoogleCalendar {
 		})
 	}
 
-	getEventsInRange(range : ICAL.Period) : ICAL.Event[] {
+	private getEventsInRange(range : ICAL.Period) : ICAL.Event[] {
 		const events = this.getEvents()
 		const result = [];
 
@@ -46,7 +46,7 @@ class GoogleCalendar {
 	getEventsInDay(startTime : ICAL.Time) {
 		const endTime = startTime.clone()
 		endTime.addDuration(new ICAL.Duration({days: 1}))
-
+		
 		const period = new ICAL.Period({
 			start: startTime,
 			end: endTime
