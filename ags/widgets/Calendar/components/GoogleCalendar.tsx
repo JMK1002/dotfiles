@@ -2,11 +2,11 @@ import { readFile } from "ags/file"
 import ICAL from "ical.js"
 
 class GoogleCalendar {
-	private fileName : string
-	private rootComponent : ICAL.Component
-	private timezone : ICAL.Timezone
+	private fileName: string
+	private rootComponent: ICAL.Component
+	private timezone: ICAL.Timezone
 
-	constructor(fileName : string) {
+	constructor(fileName: string) {
 		this.fileName = fileName
 		const filePath = `../../.calendars/${this.fileName}`
 
@@ -14,23 +14,24 @@ class GoogleCalendar {
 		const jCalData = ICAL.parse(contents)
 		this.rootComponent = new ICAL.Component(jCalData)
 
-		const timezoneComponent = this.rootComponent.getFirstSubcomponent("vtimezone")
+		const timezoneComponent =
+			this.rootComponent.getFirstSubcomponent("vtimezone")
 		const tzid = timezoneComponent?.getFirstProperty("tzid")
 		this.timezone = new ICAL.Timezone({
 			component: timezoneComponent,
-			tzid
+			tzid,
 		})
 	}
 
-	private getEventsInRange(range : ICAL.Period) : ICAL.Event[] {
+	private getEventsInRange(range: ICAL.Period): ICAL.Event[] {
 		const events = this.getEvents()
-		const result = [];
+		const result = []
 
 		for (const eventComponent of events) {
-			const event = new ICAL.Event(eventComponent);
+			const event = new ICAL.Event(eventComponent)
 			const eventPeriod = new ICAL.Period({
 				start: event.startDate,
-				end: event.endDate
+				end: event.endDate,
 			})
 			const inRange = range.compare(eventPeriod) == 0
 
@@ -43,13 +44,13 @@ class GoogleCalendar {
 		return result
 	}
 
-	getEventsInDay(startTime : ICAL.Time) {
+	getEventsInDay(startTime: ICAL.Time) {
 		const endTime = startTime.clone()
-		endTime.addDuration(new ICAL.Duration({days: 1}))
-		
+		endTime.addDuration(new ICAL.Duration({ days: 1 }))
+
 		const period = new ICAL.Period({
 			start: startTime,
-			end: endTime
+			end: endTime,
 		})
 
 		return this.getEventsInRange(period)

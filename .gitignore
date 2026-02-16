@@ -1,4 +1,6 @@
 ags/node_modules/
 ags/@girs/
-ags/style.css*
-ags/wallpaper.css*
+ags/style.css
+ags/style.css.map
+ags/wallpaper.css
+ags/wallpaper.css.map
