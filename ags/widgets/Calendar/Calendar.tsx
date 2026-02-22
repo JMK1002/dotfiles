@@ -1,7 +1,7 @@
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import WindowRevealer from "../../utils/WindowRevealer"
 import GoogleCalendar from "./components/GoogleCalendar"
-import EventDisplay from "./components/EventDisplay"
+import EventDisplay from "./components/EventButton"
 import ICAL from "ical.js"
 import { interval, timeout } from "ags/time"
 import app from "ags/gtk4/app"
@@ -14,6 +14,7 @@ import {
 	With,
 } from "gnim"
 import { exec } from "ags/process"
+import EventButton from "./components/EventButton"
 
 const myCal = new GoogleCalendar(`jmkovalovsky@gmail.com.ics`)
 
@@ -50,7 +51,9 @@ export default (gdkmonitor: Gdk.Monitor) => {
 		/>
 	)
 
-	const eventDisplays = daySelected.as((self) => myCal.getEventsInDay(self))
+	const eventsInSelectedDay = daySelected.as((self) =>
+		myCal.getEventsInDay(self).sort((a, b) => a.startDate.compare(b.startDate)),
+	)
 
 	const window = (
 		<window
@@ -76,6 +79,9 @@ export default (gdkmonitor: Gdk.Monitor) => {
 							label={"Reload Events"}
 						/>
 					</box>
+					<For each={eventsInSelectedDay}>
+						{(event) => <EventButton event={event} />}
+					</For>
 				</box>
 			</box>
 		</window>
