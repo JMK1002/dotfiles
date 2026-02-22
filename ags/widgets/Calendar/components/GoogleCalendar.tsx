@@ -1,4 +1,5 @@
-import { readFile } from "ags/file"
+import { readFile, writeFile } from "ags/file"
+import { exec, execAsync } from "ags/process"
 import ICAL from "ical.js"
 
 class GoogleCalendar {
@@ -53,13 +54,28 @@ class GoogleCalendar {
 		return this.getEventsInRange(period)
 	}
 
-	// Reloads calendar by re-reading .ics file
+	// Syncs every local calendar using vdirsyncer
+	sync() {
+		exec("vdirsyncer sync")
+	}
+
+	// Reloads calendar by syncing and then re-reading .ics file
 	// note that the calendars are stored in .calendars (vdirsyncer's default)
 	reload() {
+		this.sync()
 		const filePath = `../../.calendars/${this.fileName}`
 		const contents = readFile(filePath)
 		const jCalData = ICAL.parse(contents)
 		this.rootComponent = new ICAL.Component(jCalData)
+	}
+
+	addEvent(event: ICAL.Event) {
+		this.rootComponent.addSubcomponent(event.component)
+		writeFile(
+			"/home/Julian/.calendars/jmkovalovsky@gmail.com.ics",
+			this.rootComponent.toString(),
+		)
+		this.sync()
 	}
 
 	getRootComponent() {
