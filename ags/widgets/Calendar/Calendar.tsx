@@ -13,8 +13,9 @@ import {
 	For,
 	With,
 } from "gnim"
-import { exec } from "ags/process"
+import { exec, execAsync } from "ags/process"
 import EventButton from "./components/EventButton"
+import EventViewer from "./components/EventViewer"
 
 const myCal = new GoogleCalendar(`jmkovalovsky@gmail.com.ics`)
 
@@ -75,13 +76,13 @@ export default (gdkmonitor: Gdk.Monitor) => {
 							label={"Add Event"}
 						/>
 						<button
-							// onClicked={() => reloadEvents(calendar)}
+							onClicked={() =>
+								execAsync("vdirsyncer sync").then(() => myCal.reload())
+							}
 							label={"Reload Events"}
 						/>
 					</box>
-					<For each={eventsInSelectedDay}>
-						{(event) => <EventButton event={event} />}
-					</For>
+					<EventViewer events={eventsInSelectedDay} />
 				</box>
 			</box>
 		</window>

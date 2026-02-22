@@ -8,11 +8,8 @@ class GoogleCalendar {
 
 	constructor(fileName: string) {
 		this.fileName = fileName
-		const filePath = `../../.calendars/${this.fileName}`
 
-		const contents = readFile(filePath)
-		const jCalData = ICAL.parse(contents)
-		this.rootComponent = new ICAL.Component(jCalData)
+		this.reload()
 
 		const timezoneComponent =
 			this.rootComponent.getFirstSubcomponent("vtimezone")
@@ -54,6 +51,15 @@ class GoogleCalendar {
 		})
 
 		return this.getEventsInRange(period)
+	}
+
+	// Reloads calendar by re-reading .ics file
+	// note that the calendars are stored in .calendars (vdirsyncer's default)
+	reload() {
+		const filePath = `../../.calendars/${this.fileName}`
+		const contents = readFile(filePath)
+		const jCalData = ICAL.parse(contents)
+		this.rootComponent = new ICAL.Component(jCalData)
 	}
 
 	getRootComponent() {
