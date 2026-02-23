@@ -54,8 +54,14 @@ class GoogleCalendar {
 		return this.getEventsInRange(period)
 	}
 
+	// Writes current rootComponent to the calendar ICAL file
+	private writeToICAL() {
+		const filePath = `../.calendars/${this.fileName}`
+		writeFile(filePath, this.rootComponent.toString())
+	}
+
 	// Syncs every local calendar using vdirsyncer
-	sync() {
+	private sync() {
 		exec("vdirsyncer sync")
 	}
 
@@ -71,11 +77,12 @@ class GoogleCalendar {
 
 	addEvent(event: ICAL.Event) {
 		this.rootComponent.addSubcomponent(event.component)
-		writeFile(
-			"/home/Julian/.calendars/jmkovalovsky@gmail.com.ics",
-			this.rootComponent.toString(),
-		)
+		this.writeToICAL()
 		this.sync()
+	}
+
+	removeEvent(event: ICAL.Event) {
+		this.rootComponent.removeSubcomponent(event.component)
 	}
 
 	getRootComponent() {
