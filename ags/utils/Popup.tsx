@@ -9,7 +9,7 @@ const { EXCLUSIVE } = Astal.Keymode
 const { CENTER } = Gtk.Align
 
 interface PopupProps extends Partial<Astal.Window.ConstructorProps> {
-	margins: [number, number] // left top right bottom
+	margins: [number, number, number, number] // top right bottom left
 	gdkmonitor: Gdk.Monitor
 	children: GObject.Object
 	name: string
@@ -47,10 +47,11 @@ export default ({ children, margins, ...props }: PopupProps) => {
 				self.add_controller(exitKeyEvent)
 			}}
 			keymode={Astal.Keymode.EXCLUSIVE}
-			anchor={TOP | LEFT}
 			css={`
-				margin-left: ${margins[0] * monitorWidth}px;
-				margin-top: ${margins[1] * monitorHeight}px;
+				margin-top: ${margins[0] * monitorWidth}px;
+				margin-right: ${margins[1] * monitorHeight}px;
+				margin-bottom: ${margins[2] * monitorWidth}px;
+				margin-left: ${margins[3] * monitorHeight}px;
 			`}
 			exclusivity={Astal.Exclusivity.IGNORE}
 		>
