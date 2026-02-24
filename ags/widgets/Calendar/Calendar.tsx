@@ -16,6 +16,7 @@ import {
 import { exec, execAsync } from "ags/process"
 import EventButton from "./components/EventButton"
 import EventViewer from "./components/EventViewer"
+import Popup from "../../utils/Popup"
 
 const myCal = new GoogleCalendar(`jmkovalovsky@gmail.com.ics`)
 
@@ -56,10 +57,11 @@ export default (gdkmonitor: Gdk.Monitor) => {
 		myCal.getEventsInDay(self).sort((a, b) => a.startDate.compare(b.startDate)),
 	)
 
-	const window = (
-		<window
+	return (
+		<WindowRevealer
 			name={"CalendarWindow"}
 			application={app}
+			gdkmonitor={gdkmonitor}
 			class={"transparentBackground darkerBackground"}
 			anchor={Astal.WindowAnchor.TOP}
 			layer={Astal.Layer.TOP}
@@ -75,20 +77,11 @@ export default (gdkmonitor: Gdk.Monitor) => {
 							// onClicked={() => toggled.set(!toggled.get())}
 							label={"Add Event"}
 						/>
-						<button
-							onClicked={() =>
-								execAsync("vdirsyncer sync").then(() => myCal.reload())
-							}
-							label={"Reload Events"}
-						/>
+						<button onClicked={() => myCal.reload()} label={"Reload Events"} />
 					</box>
 					<EventViewer events={eventsInSelectedDay} />
 				</box>
 			</box>
-		</window>
+		</WindowRevealer>
 	)
-
-	if (window instanceof Astal.Window) {
-		return WindowRevealer(window)
-	}
 }
