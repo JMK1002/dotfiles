@@ -25,9 +25,9 @@ source = ~/.cache/wal/colors-hypr.conf
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,1,
+monitor=eDP-1,preferred,auto,auto,
 monitor=,preferred,auto,1,mirror,eDP-1
-monitor=DP-2,2560x1440@60,auto-left,1
+monitor=,3840x2160@60,auto,1,mirror,DP-2
 
 ###################
 ### MY PROGRAMS ###
