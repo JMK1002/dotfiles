@@ -7,6 +7,7 @@ interface TimeSelectorProps extends Partial<Gtk.Entry.ConstructorProps> {
 
 export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
 	const [section, setSection] = createState(0)
+	const [morning, setMorning] = createState(false)
 
 	interface Range {
 		min: number
@@ -24,6 +25,26 @@ export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
 		return range.min <= val && val <= range.max
 	}
 
+	const keyPressedCallback = (
+		self: Gtk.EventControllerKey,
+		keyval: number,
+		props: NumberEntryProps,
+	) => {
+		if (keyval == Gdk.KEY_BackSpace) {
+			const newValue = Math.trunc(props.value() / 10)
+			props.setValue(newValue)
+		} else if (keyval >= Gdk.KEY_0 && keyval <= Gdk.KEY_9) {
+			const digit = keyval - Gdk.KEY_0
+
+			const newValue = props.value() * 10 + digit
+			if (inRange(newValue, props.range)) {
+				props.setValue(newValue)
+			} else {
+				props.setValue(digit)
+			}
+		}
+	}
+
 	const setupFunction = (self: Gtk.Entry, props: NumberEntryProps) => {
 		createEffect(() => {
 			if (section() == props.index) {
@@ -36,32 +57,12 @@ export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
 			setSection(props.index)
 		})
 
-		const clickedController = new Gtk.GestureClick()
-		clickedController.propagationPhase = Gtk.PropagationPhase.CAPTURE
-		clickedController.connect("pressed", (self) => {
-			setSection(props.index)
-		})
-
 		const keyPressed = new Gtk.EventControllerKey()
 		keyPressed.propagationPhase = Gtk.PropagationPhase.CAPTURE
-		keyPressed.connect("key-pressed", (self, keyval) => {
-			if (keyval == Gdk.KEY_BackSpace) {
-				print("hi")
-				const newValue = Math.trunc(props.value() / 10)
-				props.setValue(newValue)
-			} else {
-				const digit = keyval - Gdk.KEY_0
-				const isDigit = digit >= 0 && digit <= 9
-				if (!isDigit) return
+		keyPressed.connect("key-pressed", (self, keyval) =>
+			keyPressedCallback(self, keyval, props),
+		)
 
-				const newValue = props.value() * 10 + digit
-				if (inRange(newValue, props.range)) {
-					props.setValue(newValue)
-				}
-			}
-		})
-
-		self.add_controller(clickedController)
 		self.add_controller(focusController)
 		self.add_controller(keyPressed)
 	}
@@ -79,7 +80,7 @@ export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
 							possibleNextDigit || inRange(value() * 10 + i, range)
 					}
 					if (!possibleNextDigit) {
-						setSection(Math.min(2, section() + 1))
+						setSection(Math.min(1, section() + 1))
 					}
 				}}
 				text={value.as((val) => String(val).padStart(2, "0"))}
@@ -102,7 +103,7 @@ export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
 						return true
 					}
 					if (keyval === Gdk.KEY_Right) {
-						setSection(Math.min(2, section() + 1))
+						setSection(Math.min(1, section() + 1))
 						return true
 					}
 					return false
@@ -112,10 +113,16 @@ export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
 			}}
 		>
 			<NumberEntry index={0} range={{ min: 1, max: 12 }} />
-			<label label=":" />
+			<label label={":"} />
 			<NumberEntry index={1} range={{ min: 0, max: 60 }} />
-			<label label=" " />
-			<NumberEntry index={2} range={{ min: 0, max: 1 }} />
+			<label label={" "} />
+			<button
+				label={morning.as((val) => (val ? "AM" : "PM"))}
+				onClicked={(self) => {
+					setMorning(!morning())
+				}}
+				class={"ampm"}
+			/>
 		</box>
 	)
 }

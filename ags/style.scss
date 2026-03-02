@@ -40,6 +40,12 @@ button {
 	background-color: col.$color3;
 	outline: none;
 
+	&.ampm {
+		border-radius: 0.3rem;
+		margin: 0.1rem;
+		background-color: col.$color3;
+	}
+
 	&:hover {
 		background-color: col.$color6;
 	}
