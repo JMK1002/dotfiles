@@ -74,7 +74,9 @@ export default (gdkmonitor: Gdk.Monitor) => {
 				<box orientation={Gtk.Orientation.VERTICAL}>
 					<box>
 						<button
-							// onClicked={() => toggled.set(!toggled.get())}
+							onClicked={(self) => {
+								app.toggle_window("EventAdder")
+							}}
 							label={"Add Event"}
 						/>
 						<button onClicked={() => myCal.reload()} label={"Reload Events"} />

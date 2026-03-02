@@ -20,6 +20,12 @@ box {
 	padding: 0.1em;
 }
 
+entry {
+	outline: none;
+	border: none;
+	background: col.$background;
+}
+
 viewport {
 	all: unset;
 }

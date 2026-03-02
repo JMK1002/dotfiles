@@ -9,17 +9,18 @@ import Quicksettings from "./widgets/Quicksettings/Quicksettings"
 import Time from "./widgets/Time/Time"
 import WallpaperChanger from "./widgets/WallpaperChanger/WallpaperChanger"
 import { timeout } from "ags/time"
+import EventAdder from "./widgets/Calendar/components/EventAdder"
 
 app.start({
-    css: style,
-    main() {
-        app.apply_css("./wallpaper.css")
-        app.get_monitors().map(Bar)
-        app.get_monitors().map(WallpaperChanger)
-        app.get_monitors().map(Time)
-        app.get_monitors().map(Calendar)
-        // App.get_monitors().map(Quicksettings)
-        // App.get_monitors().map(TextDisplay)
-    },
+	css: style,
+	main() {
+		app.apply_css("./wallpaper.css")
+		app.get_monitors().map(Bar)
+		app.get_monitors().map(WallpaperChanger)
+		app.get_monitors().map(Time)
+		app.get_monitors().map(Calendar)
+		app.get_monitors().map(EventAdder)
+		// App.get_monitors().map(Quicksettings)
+		// App.get_monitors().map(TextDisplay)
+	},
 })
-

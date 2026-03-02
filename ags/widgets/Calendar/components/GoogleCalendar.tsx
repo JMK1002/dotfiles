@@ -62,7 +62,11 @@ class GoogleCalendar {
 
 	// Syncs every local calendar using vdirsyncer
 	private sync() {
-		exec("vdirsyncer sync")
+		try {
+			// exec("vdirsyncer sync")
+		} catch (error) {
+			print("Didn't load calendar (is wifi connected?)")
+		}
 	}
 
 	// Reloads calendar by syncing and then re-reading .ics file
