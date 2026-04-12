@@ -2,7 +2,7 @@
 
 bash scripts/wall/wall.sh "wallpapers/$1"
 
-wal -i $(swww query | grep -o -E 'image: .+' | tail -c+8) -n --cols16
+wal -i $(awww query | grep -o -E 'image: .+' | tail -c+8) -n --cols16
 
 echo hyprctl clients | grep "Spotify"
 

@@ -1,11 +1,16 @@
 import { Gdk, Gtk } from "ags/gtk4"
 import { Accessor, createEffect, createState, Setter } from "gnim"
 
-interface TimeSelectorProps extends Partial<Gtk.Entry.ConstructorProps> {
-	children?: undefined
+interface Time {
+	hour: number // Hour is from 0-23 inclusive
+	minute: number
 }
 
-export default (props: Partial<Gtk.Entry.ConstructorProps>) => {
+interface TimeSelectorProps extends Partial<Gtk.Entry.ConstructorProps> {
+	timeSetter: Accessor<Time>
+}
+
+export default (props: TimeSelectorProps) => {
 	const [section, setSection] = createState(0)
 	const [morning, setMorning] = createState(false)
 
