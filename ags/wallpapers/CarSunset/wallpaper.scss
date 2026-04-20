@@ -12,5 +12,10 @@
 
 .timeWindow {
 	// @include hidden();
-	padding-bottom: 770px;
+	padding-right: 560px;
+	padding-bottom: 650px;
+
+	.weekday {
+		font-family: "Sekuya";
+	}
 }
