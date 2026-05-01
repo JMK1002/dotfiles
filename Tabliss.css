@@ -1,0 +1,101 @@
+/* TablissNG - Standard Size pywal16 Theme
+   Wallpaper: http://localhost:8000/currentWallpaper.jpg
+   Colors: http://localhost:8000/.cache/wal/colors.css
+*/
+
+@import url('http://localhost:8000/.cache/wal/colors.css');
+
+/* --- 1. BACKGROUND --- */
+
+.Background, [data-testid="wallpaper"] {
+    display: none !important;
+    background-color: #000000;
+}
+
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: url('http://localhost:8000/currentWallpaper.jpg') center/cover no-repeat !important;
+    z-index: -2 !important; 
+}
+
+body::after {
+    content: "" !important;
+    position: fixed !important;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    backdrop-filter: blur(60px) brightness(0.4) !important;
+    -webkit-backdrop-filter: blur(60px) brightness(0.4) !important;
+    z-index: -1 !important;
+}
+
+/* --- 2. ZERO BLOOM / ZERO SHADOW FORCE --- */
+
+.Widget, .Widget * {
+    text-shadow: none !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* --- 3. PYWAL16 COLORS (STANDARD SIZES) --- */
+
+/* General Text */
+.Widget, .Widget span, .Widget p {
+    color: var(--color7) !important;
+}
+
+/* Time Widget */
+.Widget .Time, .Widget .Time * {
+    color: var(--color4) !important;
+    font-weight: 700 !important;
+}
+
+/* Greeting Widget */
+.Widget .Greeting, .Widget .Greeting * {
+    color: var(--color6) !important;
+}
+
+/* Weather/Date */
+.Widget .Weather, .Widget .Weather *, [data-testid*="weather"] {
+    color: var(--color7) !important;
+}
+
+/* --- 4. POLISHED COMPONENTS --- */
+
+.Widget {
+    font-family: nunito;
+}
+
+/* Search Box: Rounded Pill */
+.Widget .Search input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 2px solid var(--color2) !important;
+    color: var(--color15) !important;
+    
+    padding: 12px 24px !important;
+    border-radius: 30px !important;
+    width: 500px !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.Widget .Search input:focus {
+    width: 500px !important;
+    border-color: var(--color4) !important;
+}
+
+/* Panels */
+.Widget .Panel, .Widget .Card {
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-top: 2px solid var(--color1) !important;
+    border-radius: 15px !important;
+    padding: 15px !important;
+}
+
+/* --- 5. SETTINGS & CLEANUP --- */
+
+.Settings svg { fill: var(--color7) !important; }
+html, body, #root { background: transparent !important; }
+::-webkit-scrollbar { display: none !important; }
