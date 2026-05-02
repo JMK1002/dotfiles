@@ -25,7 +25,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 		>
 			<box spacing={20} halign={Gtk.Align.START}>
 				<WofiButton />
-				<Workspaces />
+				<Workspaces gdkmonitor={gdkmonitor} />
 				<BackgroundButton gdkmonitor={gdkmonitor} />
 				<CalendarButton gdkmonitor={gdkmonitor} />
 			</box>
