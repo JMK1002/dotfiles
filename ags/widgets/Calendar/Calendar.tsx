@@ -59,7 +59,7 @@ export default (gdkmonitor: Gdk.Monitor) => {
 
 	return (
 		<WindowRevealer
-			name={"CalendarWindow"}
+			name={`CalendarWindow-${gdkmonitor.connector}`}
 			application={app}
 			gdkmonitor={gdkmonitor}
 			class={"transparentBackground darkerBackground"}
@@ -75,7 +75,7 @@ export default (gdkmonitor: Gdk.Monitor) => {
 					<box>
 						<button
 							onClicked={(self) => {
-								app.toggle_window("EventAdder")
+								app.toggle_window(`EventAdder-${gdkmonitor.connector}`)
 							}}
 							label={"Add Event"}
 						/>

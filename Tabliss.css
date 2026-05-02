@@ -24,8 +24,8 @@ body::after {
     content: "" !important;
     position: fixed !important;
     top: 0; left: 0; width: 100vw; height: 100vh;
-    backdrop-filter: blur(60px) brightness(0.4) !important;
-    -webkit-backdrop-filter: blur(60px) brightness(0.4) !important;
+    backdrop-filter: blur(20px) brightness(0.6) !important;
+    -webkit-backdrop-filter: blur(20px) brightness(0.6) !important;
     z-index: -1 !important;
 }
 

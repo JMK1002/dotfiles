@@ -6,7 +6,7 @@ import TimeSelector from "../../../utils/TimeSelector"
 
 export default (gdkmonitor: Gdk.Monitor) => (
 	<Popup
-		name={"EventAdder"}
+		name={`EventAdder-${gdkmonitor.connector}`}
 		application={app}
 		gdkmonitor={gdkmonitor}
 		class={"transparentBackground darkerBackground"}

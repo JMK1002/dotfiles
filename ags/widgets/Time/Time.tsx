@@ -2,7 +2,7 @@ import { execAsync } from "ags/process"
 import WindowRevealer from "../../utils/WindowRevealer"
 import { createBinding, createState } from "gnim"
 import { interval } from "ags/time"
-import { Astal, Gtk } from "ags/gtk4"
+import { Astal, Gdk, Gtk } from "ags/gtk4"
 
 const [getWeekday, setWeekday] = createState("")
 const [getDate, setDate] = createState("")
@@ -18,9 +18,9 @@ updateTime()
 
 interval(3000, updateTime)
 
-export default () => (
+export default (gdkmonitor: Gdk.Monitor) => (
 	<WindowRevealer
-		name="TimeWindow"
+		name={`TimeWindow-${gdkmonitor.connector}`}
 		class="timeWindow"
 		anchor={Astal.WindowAnchor.NONE}
 		layer={Astal.Layer.BACKGROUND}
