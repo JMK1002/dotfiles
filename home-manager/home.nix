@@ -1,35 +1,23 @@
 {
-	inputs,
-	lib,
 	config,
-	pkgs,
 	...
 }: {
 	imports = [
+		./variables.nix
 
+		../modules/gui/zed
+		../modules/gui/kitty.nix
+		../modules/gui/firefox.nix
+
+		../modules/tui/git.nix
 	];
 
 	home = {
-		username = "Julian";
-		homeDirectory = "/home/Julian";
+		username = config.var.username;
+		homeDirectory = "/home/${config.var.username}";
 	};
-
-	home.packages = with pkgs; [
-			wget
-			kitty
-			zed-editor
-		];
 
 	programs.home-manager.enable = true;
-	programs.firefox.enable = true;
-
-	programs.git = {
-		enable = true;
-		settings.user = {
-			name = "Julian Kovalovsky";
-			email = "JMKovalovsky@gmail.com";
-		};
-	};
 
 	home.stateVersion = "25.11";
 }

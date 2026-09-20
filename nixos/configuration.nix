@@ -7,6 +7,7 @@
 }: {
 	imports = [
 		./hardware-configuration.nix
+		../pkgs/nerdfonts.nix
 	];
 
 	nixpkgs = {

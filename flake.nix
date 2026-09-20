@@ -1,11 +1,9 @@
 {
-	description = "JMK100's Config";
+	description = "Julian's Config";
 
 	inputs = {
-		# Nixpkgs
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
-		# Home manager
 		home-manager.url = "github:nix-community/home-manager/release-25.11";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	};
@@ -16,8 +14,6 @@
 		home-manager,
 		...
 	} @ inputs: {
-		# NixOS configuration entrypoint
-		# Available through 'nixos-rebuild --flake .#your-hostname'
 		nixosConfigurations = {
 			home = nixpkgs.lib.nixosSystem {
 				specialArgs = {inherit inputs;};
