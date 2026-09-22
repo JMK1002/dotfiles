@@ -1,11 +1,12 @@
 {
+	config,
 	...
 }: {
 	programs.git = {
 		enable = true;
 		settings.user = {
-			name = "Julian Kovalovsky";
-			email = "JMKovalovsky@gmail.com";
+			name = config.var.git.name;
+			email = config.var.git.email;
 		};
 	};
 }

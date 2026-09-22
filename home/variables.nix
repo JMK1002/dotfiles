@@ -10,6 +10,11 @@
 
 		timeZone = "America/New_York";
 		defaultLocale = "en_US.UTF-8";
+
+		git = {
+			name = "Julian Kovalovsky";
+			email = "JMKovalovsky@gmail.com";
+		};
 	};
 
 	options.var = lib.mkOption {
