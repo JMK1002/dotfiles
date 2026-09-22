@@ -3,13 +3,16 @@
 	...
 }: {
 	imports = [
-		./variables.nix
-
+		# GUI modules
 		../modules/gui/zed
 		../modules/gui/kitty.nix
 		../modules/gui/firefox.nix
 
+		# TUI modules
 		../modules/tui/git.nix
+
+		# Variables
+		./variables.nix
 	];
 
 	home = {
