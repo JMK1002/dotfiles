@@ -15,6 +15,8 @@
 		../nixos/audio.nix
 		../nixos/hyprland.nix
 		../nixos/ssh.nix
+		../nixos/battery.nix
+		../nixos/bluetooth.nix
 
 		# Fonts
 		../modules/fonts/nerdfonts.nix
