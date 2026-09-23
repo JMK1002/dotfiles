@@ -17,6 +17,7 @@
 		../nixos/ssh.nix
 		../nixos/battery.nix
 		../nixos/bluetooth.nix
+		../nixos/noctalia.nix
 
 		# Fonts
 		../modules/fonts/nerdfonts.nix
