@@ -4,6 +4,7 @@
 }: {
 	imports = [
 		# GUI modules
+		../modules/gui/hyprland
 		../modules/gui/noctalia
 		../modules/gui/zed
 		../modules/gui/kitty.nix
