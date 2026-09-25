@@ -9,8 +9,9 @@
 		../modules/gui/kitty.nix
 		../modules/gui/firefox.nix
 
-		# TUI modules
-		../modules/tui/git.nix
+		# CLI modules
+		../modules/cli/wallust
+		../modules/cli/git.nix
 
 		# Variables
 		./variables.nix
