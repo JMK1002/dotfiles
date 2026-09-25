@@ -7,6 +7,7 @@
 		../modules/gui/hyprland
 		../modules/gui/noctalia
 		../modules/gui/zed
+		../modules/gui/nixcord
 		../modules/gui/kitty.nix
 		../modules/gui/firefox.nix
 
@@ -25,5 +26,5 @@
 
 	programs.home-manager.enable = true;
 
-	home.stateVersion = "25.11";
+	home.stateVersion = "26.05";
 }

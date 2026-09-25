@@ -3,10 +3,11 @@
 }:
 let
 	templates = {
-		# filename = desired path
+		# (filename) = (desired path)
 		"kitty.conf" = "~/.config/kitty/wallust.conf";
-		"hypr.conf" = "~/.config/hypr/wallust.conf";
+		"hypr.lua" = "~/.config/hypr/wallust.lua";
 		"zed.json" = "~/.config/zed/themes/wallust.json";
+		"nixcord.css" = "~/.config/vesktop/themes/wallust.css";
 	};
 in
 {
