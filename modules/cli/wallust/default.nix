@@ -8,6 +8,7 @@ let
 		"hypr.lua" = "~/.config/hypr/wallust.lua";
 		"zed.json" = "~/.config/zed/themes/wallust.json";
 		"nixcord.css" = "~/.config/vesktop/themes/wallust.css";
+		"helium.json" = "~/.config/helium/theme/manifest.json";
 	};
 in
 {

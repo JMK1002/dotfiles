@@ -7,9 +7,9 @@
 		../modules/gui/hyprland
 		../modules/gui/noctalia
 		../modules/gui/zed
+		../modules/gui/helium
 		../modules/gui/nixcord
 		../modules/gui/kitty.nix
-		../modules/gui/firefox.nix
 
 		# CLI modules
 		../modules/cli/wallust
