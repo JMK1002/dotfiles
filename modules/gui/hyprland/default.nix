@@ -1,4 +1,6 @@
-{ ... }:
+{
+	...
+}:
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -81,6 +83,10 @@
                 natural_scroll        = true,
                 disable_while_typing  = false,
             },
+        },
+
+        cursor = {
+        	no_hardware_cursors = 1,
         },
 
         gestures = {
