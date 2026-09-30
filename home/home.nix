@@ -10,6 +10,7 @@
 		../modules/gui/helium
 		../modules/gui/nixcord
 		../modules/gui/kitty.nix
+		../modules/gui/keyring.nix
 
 		# CLI modules
 		../modules/cli/wallust

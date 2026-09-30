@@ -17,6 +17,7 @@
 		../nixos/ssh.nix
 		../nixos/battery.nix
 		../nixos/bluetooth.nix
+		../nixos/keyring.nix
 		../nixos/noctalia.nix
 
 		# Fonts
