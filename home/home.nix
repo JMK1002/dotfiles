@@ -15,6 +15,7 @@
 		# CLI modules
 		../modules/cli/wallust
 		../modules/cli/git.nix
+		../modules/cli/languages.nix
 
 		# Variables
 		./variables.nix
