@@ -8,7 +8,8 @@
 		hostname = "home";
 		configDirectory = "/home/" + config.var.username + "/.dotfiles/nixos";
 
-		timeZone = "America/New_York";
+		# timeZone = "America/New_York";
+		timeZone = "Europe/London";
 		defaultLocale = "en_US.UTF-8";
 
 		git = {
