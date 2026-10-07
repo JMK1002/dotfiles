@@ -19,6 +19,7 @@
 		../nixos/bluetooth.nix
 		../nixos/keyring.nix
 		../nixos/noctalia.nix
+		../nixos/misc.nix
 
 		# Fonts
 		../modules/fonts/nerdfonts.nix
