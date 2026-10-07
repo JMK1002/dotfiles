@@ -9,5 +9,6 @@
 		]))
 		gnumake
 		gcc
+		nodejs
 	];
 }
