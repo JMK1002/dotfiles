@@ -11,5 +11,6 @@
 		gnumake
 		gcc
 		nodejs
+		typst
 	];
 }

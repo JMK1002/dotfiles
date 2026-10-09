@@ -11,6 +11,7 @@
 		../modules/gui/nixcord
 		../modules/gui/kitty.nix
 		../modules/gui/keyring.nix
+		../modules/gui/pdf.nix
 
 		# CLI modules
 		../modules/cli/wallust

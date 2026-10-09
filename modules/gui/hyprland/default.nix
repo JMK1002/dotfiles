@@ -6,6 +6,7 @@
 
 	wayland.windowManager.hyprland = {
 		enable = true;
+		xwayland.enable = true;
 		extraConfig = ''
 			-- Managed by Home Manager. Hyprland >= 0.55 (Lua config).
 

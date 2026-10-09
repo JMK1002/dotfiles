@@ -13,6 +13,22 @@
 			openssl
 			libffi
 			glibc
+
+		   # SDL / pygame
+		    wayland
+		    libxkbcommon
+		    libdecor
+		    libGL
+		    libx11
+		    libxext
+		    libxcursor
+		    libxi
+		    libxrandr
+		    libxrender
+		    libxfixes
+		    libxscrnsaver
+		    alsa-lib
+		    libpulseaudio
 		];
 	};
 }
