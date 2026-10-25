@@ -19,6 +19,7 @@
 		../modules/cli/git.nix
 		../modules/cli/languages.nix
 		../modules/cli/duckdb.nix
+		../modules/cli/claude.nix
 
 		# Variables
 		./variables.nix
