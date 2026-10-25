@@ -12,11 +12,13 @@
 		../modules/gui/kitty.nix
 		../modules/gui/keyring.nix
 		../modules/gui/pdf.nix
+		../modules/gui/fileViewer.nix
 
 		# CLI modules
 		../modules/cli/wallust
 		../modules/cli/git.nix
 		../modules/cli/languages.nix
+		../modules/cli/duckdb.nix
 
 		# Variables
 		./variables.nix

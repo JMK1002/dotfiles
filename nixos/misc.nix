@@ -14,6 +14,8 @@
 			libffi
 			glibc
 
+			unzip
+
 		   # SDL / pygame
 		    wayland
 		    libxkbcommon
