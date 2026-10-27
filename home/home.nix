@@ -13,6 +13,7 @@
 		../modules/gui/keyring.nix
 		../modules/gui/pdf.nix
 		../modules/gui/fileViewer.nix
+		../modules/gui/osu.nix
 
 		# CLI modules
 		../modules/cli/wallust
