@@ -21,6 +21,7 @@
 		../modules/cli/languages.nix
 		../modules/cli/duckdb.nix
 		../modules/cli/claude.nix
+		../modules/cli/fastfetch.nix
 
 		# Variables
 		./variables.nix
