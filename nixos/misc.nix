@@ -3,6 +3,10 @@
 	...
 }:
 {
+	environment.systemPackages = with pkgs; [
+		unzip
+	];
+
 	# Allows dynamic linking
 	# useful for using uv to create python venvs
 	programs.nix-ld = {
@@ -13,8 +17,6 @@
 			openssl
 			libffi
 			glibc
-
-			unzip
 
 		   # SDL / pygame
 		    wayland
