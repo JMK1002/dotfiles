@@ -13,5 +13,6 @@ in
 	home.packages = with pkgsUnstable; [
 		osu-lazer-bin
 		gamemode
+		gamescope
 	];
 }

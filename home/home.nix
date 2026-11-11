@@ -9,11 +9,13 @@
 		../modules/gui/zed
 		../modules/gui/helium
 		../modules/gui/nixcord
+		../modules/gui/spotify
 		../modules/gui/kitty.nix
 		../modules/gui/keyring.nix
 		../modules/gui/pdf.nix
 		../modules/gui/fileViewer.nix
 		../modules/gui/osu.nix
+		../modules/gui/gimp.nix
 
 		# CLI modules
 		../modules/cli/wallust

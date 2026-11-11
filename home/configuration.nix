@@ -19,6 +19,7 @@
 		../nixos/bluetooth.nix
 		../nixos/keyring.nix
 		../nixos/noctalia.nix
+		../nixos/docker.nix
 		../nixos/misc.nix
 
 		# Fonts
@@ -31,7 +32,7 @@
 	users.users.${config.var.username} = {
 		hashedPasswordFile = "./secrets/${config.var.username}.hash";
 		isNormalUser = true;
-		extraGroups = ["wheel"];
+		extraGroups = [ "wheel" "docker" ];
 	};
 
 	# https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

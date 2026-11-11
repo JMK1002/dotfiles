@@ -18,9 +18,9 @@
 			local mainMod     = "SUPER"
 
 			---- Monitors ----
-			hl.monitor({ output = "",     mode = "preferred",     position = "auto",      scale = 1, mirror = "eDP-1" })
-			hl.monitor({ output = "DP-1", mode = "2560x1440@60", position = "auto-left", scale = 1 })
-			hl.monitor({ output = "DP-2", mode = "2560x1440@60", position = "auto-left", scale = 1 })
+			hl.monitor({ output = "",     mode = "preferred",     position = "auto",      scale = 1 })
+			-- hl.monitor({ output = "DP-1", mode = "2560x1440@60", position = "auto-left", scale = 1 })
+			-- hl.monitor({ output = "DP-2", mode = "2560x1440@60", position = "auto-left", scale = 1 })
 
 			---- Autostart ----
 			hl.on("hyprland.start", function()
@@ -90,7 +90,7 @@
 				},
 
 				cursor = {
-					no_hardware_cursors = 0,
+					-- no_hardware_cursors = 1,
 				},
 
 				gestures = {
@@ -149,6 +149,18 @@
 
 			hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 			hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+			hl.window_rule({ match = { class = "osu!" }, immediate = true })
+
+			hl.layer_rule({
+				name = "noctalia-blur",
+				match = {
+					namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
+				},
+				ignore_alpha = 0.5,
+				blur = true,
+				blur_popups = true,
+			})
 		'';
 	};
 }

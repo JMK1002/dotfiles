@@ -16,6 +16,7 @@
 			# Misc
 			sync_to_monitor = "yes";
 			confirm_os_window_close = 0;
+			remember_window_size = "no";
 
 			# Background
 			background_opacity = 0.65;

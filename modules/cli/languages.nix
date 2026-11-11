@@ -14,6 +14,9 @@
 		lldb
 		clang-tools
 		nodejs
+		vite
+		docker
+		tailwindcss
 		typst
 		ocaml
 
