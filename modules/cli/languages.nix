@@ -19,6 +19,10 @@
 		tailwindcss
 		typst
 		ocaml
-
 	];
+
+	programs.java = {
+		enable = true;
+		package = pkgs.jdk25;
+	};
 }
