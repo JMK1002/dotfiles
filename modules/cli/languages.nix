@@ -19,6 +19,9 @@
 		tailwindcss
 		typst
 		ocaml
+		postgresql
+		gradle
+		maven
 	];
 
 	programs.java = {
